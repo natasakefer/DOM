@@ -66,7 +66,7 @@ console.log(lista);
 lista[2].textContent=" ne znam sta"
 
 //ParentNode
-*/
+
 let listitem= document.getElementById("items");
 //console.log(listitem.parentNode.parentNode)
 
@@ -115,3 +115,49 @@ console.log(lista)
 lista[1].previousElementSibling.style.backgroundColor="blue"
 lista[1].nextElementSibling.style.backgroundColor="lightblue"
 lista[1].parentElement.style.backgroundColor="orange"
+*/
+let newDiv = document.createElement("div");
+let textnode = document.createTextNode("Napravio sam novi element");
+newDiv.appendChild(textnode);
+
+let container = document.getElementById("container");
+let h2 = document.querySelector("#container h2");
+container.insertBefore(newDiv, h2);
+
+let svejedno = document.getElementById("svejedno")
+let p = document.querySelector("#svejedno p")
+
+let newP = document.createElement("p")
+let textP = document.createTextNode("neki random tekst");
+
+newP.appendChild(textP)
+svejedno.insertBefore(newP, p)
+
+let newitems = document.createElement("li")
+let textli = document.createTextNode("novi item")
+newitems.appendChild(textnode)
+
+let listitems = document.getElementById("items")
+let li = document.querySelector(".list-items")
+listitems.insertBefore(newitems, li)
+
+let button = document.getElementById("button")
+let textBox = document.getElementById("textBox")
+
+let addNewItemToList = function () {
+    // iscitamo teks iz forme
+    let text = textBox.value;
+    // napravimo novi li
+    let newitems = document.createElement("li")
+    // napravimo textnode sa tekstom koji smo iscitali iz tekst forme
+    let textli = document.createTextNode(text)
+    //spojimo ih
+    newitems.appendChild(textli)
+   //izaberemo ul
+    let items = document.getElementById("items")
+    //
+    console.log(items.childNodes)
+    items.insertBefore(newitems, items.lastChild.nextSibling);
+}
+
+button.addEventListener("click", addNewItemToList)
